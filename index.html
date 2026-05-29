@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>AQI Premium Dashboard</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Leaflet -->
+  <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Heatmap -->
+  <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Animated Background -->
+  <div class="bg-stars"></div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+
+    <div class="brand">
+      🌍 AQI Premium
+    </div>
+
+    <div class="nav-menu">
+
+      <button class="nav-btn"
+        onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        Dashboard
+      </button>
+
+      <button class="nav-btn"
+        onclick="document.getElementById('forecastSection')
+        .scrollIntoView({behavior:'smooth'})">
+        Forecast
+      </button>
+
+      <button class="nav-btn"
+        onclick="document.getElementById('reportSection')
+        .scrollIntoView({behavior:'smooth'})">
+        Reports
+      </button>
+
+    </div>
+
+    <div class="nav-right">
+      <button class="login-btn">
+        Login
+      </button>
+    </div>
+
+  </header>
+
+  <!-- MAIN -->
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <h1 id="title">
+        Air Quality Intelligence Center
+      </h1>
+
+      <p>
+        Live Air Analytics • Smart Forecast • Pollution Insights
+      </p>
+
+      <!-- SEARCH -->
+      <div class="search-box">
+
+        <input type="text"
+          id="cityInput"
+          placeholder="Search city e.g Kolkata" />
+
+        <button onclick="searchCity()">
+          Search
+        </button>
+
+        <button onclick="useMyLocation()">
+          📍 My Location
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- AQI TOP CARDS -->
+    <section class="cards">
+
+      <div class="card">
+        <span>Current AQI</span>
+        <h2 id="aqiValue">--</h2>
+      </div>
+
+      <div class="card">
+        <span>Status</span>
+        <h2 id="aqiStatus">--</h2>
+      </div>
+
+      <div class="card">
+        <span>PM2.5</span>
+        <h2 id="pm25">--</h2>
+      </div>
+
+      <div class="card">
+        <span>PM10</span>
+        <h2 id="pm10">--</h2>
+      </div>
+
+    </section>
+
+    <!-- GAUGE + FORECAST -->
+    <section class="grid-two">
+
+      <!-- Gauge -->
+      <div class="panel gauge-panel">
+
+        <h3>Gauge Meter</h3>
+
+        <div class="gauge-wrap">
+
+          <canvas
+            id="gaugeCanvas"
+            width="220"
+            height="220">
+          </canvas>
+
+        </div>
+
+        <p class="small-text">
+
+          <span style="color:#00ff99;font-weight:bold;">
+            Green = Good
+          </span>
+
+          •
+
+          <span style="color:#ffd000;font-weight:bold;">
+            Yellow = Moderate
+          </span>
+
+          •
+
+          <span style="color:#ff4d6d;font-weight:bold;">
+            Red = Poor
+          </span>
+
+        </p>
+
+      </div>
+
+      <!-- Forecast -->
+      <div class="panel chart-panel"
+        id="forecastSection">
+
+        <h3>7 Day Forecast</h3>
+
+        <canvas id="forecastChart"></canvas>
+
+      </div>
+
+    </section>
+
+    <!-- POLLUTANTS -->
+    <section class="panel">
+
+      <h3>Air Pollutant Breakdown</h3>
+
+      <div class="cards six">
+
+        <div class="card">
+          <span>O₃</span>
+          <h2 id="o3">--</h2>
+        </div>
+
+        <div class="card">
+          <span>CO</span>
+          <h2 id="co">--</h2>
+        </div>
+
+        <div class="card">
+          <span>NO₂</span>
+          <h2 id="no2">--</h2>
+        </div>
+
+        <div class="card">
+          <span>SO₂</span>
+          <h2 id="so2">--</h2>
+        </div>
+
+        <div class="card">
+          <span>Humidity</span>
+          <h2 id="humidity">--</h2>
+        </div>
+
+        <div class="card">
+          <span>Wind</span>
+          <h2 id="wind">--</h2>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 10 DAY -->
+    <section class="panel"
+      id="reportSection">
+
+      <h3>10 Day Long Forecast</h3>
+
+      <canvas id="longChart"></canvas>
+
+    </section>
+
+    <!-- HISTORY -->
+    <section class="panel">
+
+      <h3>Historical AQI Dashboard</h3>
+
+      <canvas id="historyChart"></canvas>
+
+    </section>
+
+    <!-- HEALTH ADVICE -->
+    <section class="panel advice-panel">
+
+      <h3>Health Advice</h3>
+
+      <div id="adviceBox">
+
+        Air quality advice will appear here...
+
+      </div>
+
+    </section>
+
+    <!-- HOURLY FORECAST -->
+    <section class="panel hourly-panel">
+
+      <h3>Hourly Forecast</h3>
+
+      <div id="forecastBar">
+
+      </div>
+
+    </section>
+
+    <!-- SAFE ROUTE -->
+    <section class="panel route-panel">
+
+      <h3>Safe Route Finder</h3>
+
+      <div class="search-box">
+
+        <input type="text"
+          id="sourceInput"
+          placeholder="Source location" />
+
+        <input type="text"
+          id="destinationInput"
+          placeholder="Destination location" />
+
+        <button onclick="findSafeRoute()">
+          Find Safe Route
+        </button>
+
+      </div>
+
+      <div id="routeAdvice"></div>
+
+    </section>
+
+    <!-- LIVE MAP -->
+    <section class="panel map-panel">
+
+      <h3>Live Pollution Map</h3>
+
+      <div id="map"></div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+
+    Made by Samya
+
+  </footer>
+
+  <!-- JS -->
+  <script src="app.js"></script>
+
+</body>
+
+</html>
+
