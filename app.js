@@ -615,3 +615,51 @@ window.onload=()=>{
 
  useMyLocation();
 };
+
+function toggleFullscreenMap(){
+
+  const mapDiv =
+    document.getElementById("map");
+
+  mapDiv.classList.toggle(
+    "map-fullscreen"
+  );
+
+  setTimeout(()=>{
+
+    map.invalidateSize();
+
+  },300);
+}
+
+function openFullscreenMap(){
+
+  const mapDiv =
+    document.getElementById("map");
+
+  mapDiv.classList.add(
+    "map-fullscreen"
+  );
+
+  setTimeout(()=>{
+
+    map.invalidateSize();
+
+  },300);
+}
+
+function closeFullscreenMap(){
+
+  const mapDiv =
+    document.getElementById("map");
+
+  mapDiv.classList.remove(
+    "map-fullscreen"
+  );
+
+  setTimeout(()=>{
+
+    map.invalidateSize();
+
+  },300);
+}

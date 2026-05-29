@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>AQI Premium Dashboard</title>
+  <title>🌍 AI-Powered Smart Air Quality Forecasting & Health Advisory System</title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
@@ -33,7 +33,7 @@
   <header class="navbar">
 
     <div class="brand">
-      🌍 AQI Premium
+      🌍 AI-Powered AirSense
     </div>
 
     <div class="nav-menu">
@@ -58,9 +58,17 @@
     </div>
 
     <div class="nav-right">
-      <button class="login-btn">
-        Login
-      </button>
+      <button class="nav-btn" onclick="location.reload()">
+    Restart
+  </button>
+
+  <button class="nav-btn" onclick="window.open('index.html','_blank')">
+    New
+  </button>
+
+  <button class="login-btn">
+    Login
+  </button>
     </div>
 
   </header>
@@ -287,7 +295,33 @@
     <!-- LIVE MAP -->
     <section class="panel map-panel">
 
-      <h3>Live Pollution Map</h3>
+      <h3><div class="map-header">
+
+<div class="map-header">
+
+  <h3>Live Pollution Map</h3>
+
+  <div class="map-controls">
+
+    <button class="fullscreen-btn"
+      onclick="openFullscreenMap()">
+
+      ⛶ Full Screen
+
+    </button>
+
+    <button class="exit-btn"
+      onclick="closeFullscreenMap()">
+
+      ✖ Exit
+
+    </button>
+
+  </div>
+
+</div>
+
+</div></h3>
 
       <div id="map"></div>
 
