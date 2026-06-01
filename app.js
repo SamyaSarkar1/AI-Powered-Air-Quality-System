@@ -37,7 +37,7 @@ L.marker([22.57,88.36]).addTo(map);
 async function getAQI(lat,lon){
 
  const res = await fetch(
- `http://localhost:8080/api/aqi?lat=${lat}&lon=${lon}`
+ `https://airsense-backend-4fw9.onrender.com/api/aqi?lat=${lat}&lon=${lon}`
  );
 
  return await res.json();
