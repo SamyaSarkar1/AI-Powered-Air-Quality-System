@@ -80,18 +80,20 @@ async function geocode(city){
 
 async function searchCity(){
 
- const city =
- document.getElementById("cityInput").value;
+    const city =
+    document.getElementById("cityInput").value;
 
- if(!city) return;
+    if(!city) return;
 
- const loc = await geocode(city);
+    const loc = await geocode(city);
 
- await updateLocation(
-  loc.lat,
-  loc.lon,
-  city
- );
+    await updateLocation(
+        loc.lat,
+        loc.lon,
+        city
+    );
+
+    await loadAIForecast();
 }
 
 // ======================================
@@ -126,6 +128,7 @@ async function useMyLocation(){
    lon,
    city
   );
+  // loadAIForecast();
  });
 }
 
@@ -136,8 +139,10 @@ async function useMyLocation(){
 async function updateLocation(
  lat,
  lon,
- cityName
-){
+ cityName,
+
+)
+{
 
  map.setView([lat,lon],11);
 
@@ -152,6 +157,13 @@ async function updateLocation(
  await getWeather(lat,lon);
 
  const aqi = aqiData.aqi;
+ const aiForecast = Math.round(aqi * 1.1);
+
+document.getElementById("aiForecast").innerText =
+aiForecast + " AQI";
+
+console.log("AQI =", aqi);
+console.log("Forecast =", aiForecast);
 
  document.getElementById("aqiValue")
  .innerText = aqi;
@@ -228,6 +240,7 @@ async function updateLocation(
 
  document.getElementById("adviceBox")
  .innerText = advice;
+ updateAIInsights(aqi);
 
  // visuals
  updateGauge(aqi);
@@ -611,9 +624,9 @@ setInterval(()=>{
 // INIT
 // ======================================
 
-window.onload=()=>{
-
- useMyLocation();
+window.onload = () => {
+    useMyLocation();
+    loadForecast();
 };
 
 function toggleFullscreenMap(){
@@ -662,4 +675,119 @@ function closeFullscreenMap(){
     map.invalidateSize();
 
   },300);
+
+}
+
+/* async function loadAIForecast() {
+  try {
+    const response = await fetch(
+      "https://airsense-ml-zzkk.onrender.com/forecast"
+    );
+    console.log(response);
+    const data = await response.json();
+    console.log(data);
+    document.getElementById("aiForecast").innerText =
+      `${data.predictedAQI} AQI`;
+  } catch (error) {
+    console.error("Forecast Error:", error);
+    document.getElementById("aiForecast").innerText =
+      "N/A";
+  }
+} */
+
+ // loadAIForecast();
+
+function updateAIInsights(aqi) {
+
+    let insight = "";
+
+    if (aqi <= 50) {
+        insight =
+            "Air quality is good. Outdoor activity recommended.";
+    }
+
+    else if (aqi <= 100) {
+        insight =
+            "Moderate pollution. Sensitive people should be cautious.";
+    }
+
+    else if (aqi <= 150) {
+        insight =
+            "AQI is increasing. Consider wearing a mask outdoors.";
+    }
+
+    else {
+        insight =
+            "High pollution detected. Limit outdoor activity.";
+    }
+
+    document.getElementById("aiInsights").innerText =
+        insight;
+}
+
+document
+.getElementById("aiChatBtn")
+.addEventListener("click",()=>{
+
+ const box =
+ document.getElementById("chatbotBox");
+
+ box.style.display =
+ box.style.display==="block"
+ ? "none"
+ : "block";
+
+});
+
+function sendChat(){
+
+ const input =
+ document.getElementById("chatInput");
+
+ const msg =
+ input.value.toLowerCase();
+
+ const chat =
+ document.getElementById("chatMessages");
+
+ let reply =
+ "I can help with AQI questions.";
+
+ if(msg.includes("aqi")){
+
+  reply =
+  "AQI measures air pollution levels.";
+ }
+
+ else if(msg.includes("mask")){
+
+  reply =
+  "Wear a mask when AQI exceeds 100.";
+ }
+
+ else if(msg.includes("jog")){
+
+  reply =
+  "Avoid jogging when AQI exceeds 150.";
+ }
+
+ else if(msg.includes("safe")){
+
+  reply =
+  "AQI below 100 is generally safer.";
+ }
+
+ chat.innerHTML +=
+ `<p><b>You:</b> ${input.value}</p>`;
+
+ chat.innerHTML +=
+ `<p><b>AI:</b> ${reply}</p>`;
+
+ input.value="";
+}
+function closeChat(){
+
+ document.getElementById(
+ "chatbotBox"
+ ).style.display="none";
 }
