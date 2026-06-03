@@ -1,190 +1,235 @@
-# 🌍 AI-Powered Smart Air Quality Forecasting & Health Advisory System
+# 🌍 AI-Powered AirSense – Smart Air Quality Forecasting & Health Advisory System
 
-## 📌 Project Overview
+## 📌 Overview
 
-An AI-powered smart air quality monitoring and forecasting platform that provides:
+AI-Powered AirSense is a full-stack environmental intelligence platform designed to monitor, analyze, visualize, and forecast air quality in real time. The system combines live AQI monitoring, weather analytics, pollution mapping, forecasting models, and AI-driven health recommendations through a modern premium dashboard.
+
+The platform helps users make informed decisions about outdoor activities, travel routes, and health precautions based on current and predicted air pollution conditions.
+
+---
+
+## 🚀 Key Features
+
+### 🌎 Real-Time Air Quality Monitoring
 
 * Live AQI monitoring
-* Pollution analytics
-* Smart health advice
-* 7-day and 10-day AQI forecasting
-* Hourly AQI prediction
-* Safe route finder
-* Pollution heatmap visualization
-* Interactive premium dashboard
+* PM2.5 concentration tracking
+* PM10 concentration tracking
+* Dynamic AQI status classification
+* City-based AQI search
 
-This project combines:
-
-* HTML
-* CSS
-* JavaScript
-* Spring Boot
-* OpenWeather API
-* Leaflet Maps
-* Chart.js
-* Python ML (Upcoming)
-
----
-
-# 🚀 Features
-
-## ✅ Live AQI Monitoring
-
-Real-time AQI tracking using APIs and backend integration.
-
-## ✅ Premium Dashboard UI
-
-Modern glassmorphism-based responsive interface.
-
-## ✅ AQI Gauge Meter
-
-Animated AQI speedometer with dynamic colors:
-
-* Green → Good
-* Yellow → Moderate
-* Red → Poor
-
-## ✅ Forecasting System
+### 📈 Smart Forecasting System
 
 * Hourly AQI forecast
-* 7-day AQI forecast
-* 10-day AQI prediction
+* 7-Day AQI forecasting
+* 10-Day AQI prediction
+* AQI trend visualization
+* Interactive forecast charts
 
-## ✅ Smart Health Advisory
+### 🧠 AI-Based Health Advisory
 
-AI-based health recommendations according to AQI level.
+* Dynamic health recommendations
+* AQI risk assessment
+* Outdoor activity guidance
+* Mask usage recommendations
+* Pollution awareness alerts
 
-## ✅ Pollution Heatmap
+### 🗺️ Interactive Pollution Intelligence Map
 
-Interactive live pollution map using Leaflet + OpenWeather layers.
+* Live pollution heatmap
+* OpenStreetMap integration
+* Interactive location markers
+* Fullscreen map mode
+* Mobile-friendly map visualization
 
-## ✅ Safe Route Finder
+### 🚦 Smart Safe Route Finder
 
-Find lower pollution routes between locations.
+* Pollution-aware route suggestions
+* Low-exposure travel recommendations
+* Environmental navigation support
 
-## ✅ Interactive Charts
+### 📊 Premium Analytics Dashboard
 
-Dynamic AQI analytics using Chart.js.
+* Animated AQI Gauge Meter
+* Glassmorphism user interface
+* Interactive charts and graphs
+* Responsive layout
+* Premium dark theme
+
+### 🌤️ Weather Analytics
+
+* Temperature monitoring
+* Humidity analysis
+* Wind speed tracking
+* Weather condition integration
+
+### 🤖 Machine Learning Forecast Module
+
+* AQI prediction model
+* Historical data analysis
+* Forecast generation pipeline
+* Future AI forecasting engine
+
+### ☁️ Cloud Deployment
+
+* Frontend deployed on Netlify
+* Backend deployed on Render
+* GitHub version control
+* Cross-platform accessibility
 
 ---
 
-# 🛠️ Technologies Used
+## 🛠 Technology Stack
 
-## Frontend
+### Frontend
 
 * HTML5
 * CSS3
 * JavaScript
-
-## Backend
-
-* Spring Boot (Java)
-
-## APIs
-
-* OpenWeather API
-* OpenStreetMap
+* Chart.js
 * Leaflet.js
 
-## Charts & Visualization
+### Backend
 
-* Chart.js
-* Leaflet Heatmap
+* Spring Boot
+* Java
+* REST APIs
 
-## Upcoming
+### APIs
 
-* Python Flask ML Forecasting
-* MySQL Database
-* AI Prediction Engine
+* OpenWeather API
+* OpenStreetMap API
 
----
+### Machine Learning
 
-# 📷 Dashboard Preview
+* Python
+* Pandas
+* NumPy
+* Scikit-Learn
 
-Premium AQI dashboard with:
+### Deployment
 
-* Live AQI cards
-* Forecast graphs
-* Animated gauge meter
-* Pollution map
-* Smart analytics
-
----
-
-# 📂 Project Structure
-
-```bash
-Frontend (HTML/CSS/JS)
-        ↓
-Spring Boot Backend
-        ↓
-Python Flask ML API
-        ↓
-Prediction Response
-        ↓
-Frontend Dashboard
-```
+* Netlify
+* Render
+* GitHub
 
 ---
 
-# ⚙️ Installation
+## 📷 Dashboard Modules
 
-## Clone Repository
+### Dashboard
 
-```bash
+* Live AQI Cards
+* AQI Status
+* PM2.5 & PM10 Analytics
+* Animated Gauge Meter
+
+### Forecast
+
+* Hourly Forecast
+* 7-Day AQI Forecast
+* 10-Day Prediction
+* AQI Trend Charts
+
+### Reports
+
+* Pollution Statistics
+* Historical Analytics
+* Environmental Insights
+
+### Map Intelligence
+
+* Live Pollution Heatmap
+* Fullscreen Map View
+* Smart Location Tracking
+
+---
+
+## 🏗 System Architecture
+
+Frontend Dashboard (HTML/CSS/JS)
+↓
+Spring Boot Backend (REST API)
+↓
+OpenWeather API Integration
+↓
+AQI Processing & Analysis
+↓
+ML Forecast Engine (Python)
+↓
+Prediction Results
+↓
+Interactive Dashboard Visualization
+
+---
+
+## ⚙️ Installation
+
+### Clone Repository
+
 git clone https://github.com/SamyaSarkar1/AI-Powered-Air-Quality-System.git
-```
 
----
+### Run Frontend
 
-# ▶️ Run Frontend
+Open index.html using VS Code Live Server.
 
-Open:
+### Run Backend
 
-```bash
-index.html
-```
+Start Spring Boot Application:
 
-Using Live Server in VS Code.
-
----
-
-# ▶️ Run Backend
-
-Open Spring Boot project and run:
-
-```bash
 AirQualityBackendApplication.java
-```
 
-Backend runs on:
+Backend URL:
 
-```bash
 http://localhost:8080
-```
 
 ---
 
-# 🌟 Future Improvements
+## 🌟 Future Enhancements
 
-* AI-based AQI prediction model
-* Google Maps safe routing
-* Real ML forecasting
-* User authentication
-* Cloud deployment
-* Mobile app integration
-
----
-
-# 👨‍💻 Developer
-
-## Samya Sarkar
-
-Electronics Engineering Student
-Passionate about AI, IoT, and Smart Environmental Systems.
+* Deep Learning AQI Forecasting
+* LSTM-Based Prediction Models
+* User Authentication System
+* Cloud Database Integration
+* Mobile Application
+* Google Maps Navigation Integration
+* Real-Time IoT Sensor Integration
+* Personalized Health Recommendations
 
 ---
 
-# 📄 License
+## 👨‍💻 Developer
 
-This project is for educational and research purposes.
+### Samya Sarkar
+
+Electronics & Communication Engineering Student
+
+Interests:
+
+* Artificial Intelligence
+* Machine Learning
+* Embedded Systems
+* IoT Solutions
+* Environmental Intelligence Systems
+
+---
+
+## 🔗 Project Links
+
+Frontend Repository:
+https://github.com/SamyaSarkar1/AI-Powered-Air-Quality-System
+
+Backend Repository:
+https://github.com/SamyaSarkar1/airsense-backend
+
+Machine Learning Repository:
+https://github.com/SamyaSarkar1/airsense-ml
+
+Live Demo:
+https://ai-powered-airsense.netlify.app
+
+---
+
+## 📄 License
+
+This project is developed for educational, research, and environmental awareness purposes.
